@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aditi & Khush – Ring Ceremony Invitation</title>
+    <meta name="description" content="Together with our families, we invite you to celebrate our Ring Ceremony. Aditi & Khush's digital invitation.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Montserrat:wght@200;300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Splash Screen / Interactive Envelope -->
+    <div id="splash-screen">
+        <canvas id="splash-canvas"></canvas>
+        <div class="splash-content">
+            <h2 class="splash-pretitle">You're Invited</h2>
+            
+            <!-- Envelope Container -->
+            <div class="envelope-wrapper">
+                <div class="envelope">
+                    <div class="envelope-flap"></div>
+                    <div class="envelope-paper">
+                        <div class="paper-content">
+                            <span class="royal-crest">A&K</span>
+                            <h3>Ring Ceremony</h3>
+                            <p class="couple-names-small">Aditi & Khush</p>
+                            <p class="envelope-date">Save the Date • 19th September 2026</p>
+                        </div>
+                    </div>
+                    <div class="envelope-front"></div>
+                </div>
+            </div>
+            
+            <button id="open-envelope-btn" class="gold-btn ripple-btn">
+                <span>Tap to Open</span>
+                <div class="btn-glow"></div>
+            </button>
+        </div>
+    </div>
+
+    <!-- Background Canvas for Sparkles & Petals -->
+    <canvas id="ambient-canvas"></canvas>
+
+    <!-- Floating Music Player -->
+    <div id="music-player" class="hidden">
+        <audio id="bg-audio" preload="auto">
+            <source src="./WhatsApp%20Audio%202026-09-01%20at%202.50.02%20AM.mpeg" type="audio/mpeg">
+            <source src="./assets/music/WhatsApp%20Audio%202026-09-01%20at%202.50.02%20AM.mpeg" type="audio/mpeg">
+        </audio>
+        <button id="music-toggle" class="ripple-btn" aria-label="Toggle Music">
+            <i class="fas fa-music"></i>
+            <div class="wave-container">
+                <span class="bar bar-1"></span>
+                <span class="bar bar-2"></span>
+                <span class="bar bar-3"></span>
+                <span class="bar bar-4"></span>
+            </div>
+        </button>
+        <div class="music-info">
+            <span class="song-title">Our Special Song ❤️</span>
+            <div class="volume-slider-container">
+                <i class="fas fa-volume-down"></i>
+                <input type="range" id="volume-slider" min="0" max="1" step="0.05" value="0.6">
+                <i class="fas fa-volume-up"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content Container -->
+    <div id="main-content">
+        
+        <!-- Header / Logo -->
+        <header>
+            <div class="logo">A&K</div>
+        </header>
+
+        <!-- Hero Section -->
+        <section id="hero">
+            <div class="scroll-fade">
+                <div class="crest-container">
+                    <div class="royal-crest-glow"></div>
+                    <div class="crest-monogram">A&K</div>
+                </div>
+                <h1 class="couple-names">Aditi <span class="heart-accent">&</span> Khush</h1>
+                <p class="hero-subtitle">Together with our families, we invite you to celebrate our Ring Ceremony.</p>
+                <div class="hero-scroll-indicator">
+                    <span>Scroll Down</span>
+                    <i class="fa-solid fa-chevron-down scroll-bounce"></i>
+                </div>
+            </div>
+        </section>
+
+        <!-- Animated Couple Illustration Section -->
+        <section id="animated-couple">
+            <div class="section-container">
+                <div class="couple-wrapper">
+                    <div class="illustration-frame">
+                        <img src="assets/images/couple_illustration.jpg" alt="Aditi & Khush Ring Ceremony" class="couple-img">
+                        <div class="sparkle-layer"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Invitation Message -->
+        <section id="invitation-message">
+            <div class="section-container">
+                <div class="message-card">
+                    <div class="card-border-corner top-left"></div>
+                    <div class="card-border-corner top-right"></div>
+                    <div class="card-border-corner bottom-left"></div>
+                    <div class="card-border-corner bottom-right"></div>
+                    
+                    <span class="card-crest">💍</span>
+                    <h2 class="section-title text-reveal">You're Invited to Our Ring Ceremony</h2>
+                    <p class="section-subtitle">Join Us for a Night to Remember</p>
+                    
+                    <div class="line-reveal message-text">
+                        <p class="quote-text">"Every love story has a beautiful beginning — and ours is just getting started."</p>
+                        <p>With hearts full of joy and gratitude, we warmly invite you to join us in person as we celebrate one of the most special milestones of our lives — our Ring Ceremony.</p>
+                        <p>We have chosen the beautiful <strong>Ember &amp; Mist</strong> in Harrow as the backdrop for this magical occasion. Your blessings, love, and warm presence will make this day truly unforgettable.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Together With Our Families -->
+        <section id="families-section">
+            <div class="section-container animate-scroll-up">
+                <div class="family-card">
+                    <h2 class="family-title-crest">💖 Together With Our Families</h2>
+                    <div class="couple-family-grid">
+                        <div class="family-member">
+                            <h3 class="family-name-heading">Khush</h3>
+                        </div>
+                        <div class="family-divider">
+                            <span class="heart-icon">❤️</span>
+                        </div>
+                        <div class="family-member">
+                            <h3 class="family-name-heading">Aditi</h3>
+                        </div>
+                    </div>
+                    <p class="invite-closing">are delighted to invite you to witness the beginning of our forever.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Event Details -->
+        <section id="event-details">
+            <div class="section-container">
+                <h2 class="section-title">📅 Event Details</h2>
+                <p class="section-subtitle">Join us from anywhere in the world</p>
+                <div class="details-grid">
+                    
+                    <!-- Date Card -->
+                    <div class="detail-card animate-scroll-up">
+                        <div class="icon-wrap"><i class="fa-regular fa-calendar-days"></i></div>
+                        <h3>Date</h3>
+                        <p class="card-main-val">Saturday, 19th September 2026</p>
+                        <p class="card-sub-val">Mark your calendars!</p>
+                    </div>
+
+                    <!-- Time Card -->
+                    <div class="detail-card animate-scroll-up">
+                        <div class="icon-wrap"><i class="fa-regular fa-clock"></i></div>
+                        <h3>Time</h3>
+                        <p class="card-main-val">5:00 PM (BST)</p>
+                        <p class="card-sub-val">Doors open at 5 PM sharp</p>
+                    </div>
+
+                    <!-- Venue Card -->
+                    <div class="detail-card animate-scroll-up">
+                        <div class="icon-wrap"><i class="fa-solid fa-location-dot"></i></div>
+                        <h3>Venue</h3>
+                        <p class="card-main-val">Ember &amp; Mist</p>
+                        <p class="card-sub-val">Harrow, London</p>
+                    </div>
+
+                    <!-- Address Card -->
+                    <div class="detail-card animate-scroll-up">
+                        <div class="icon-wrap"><i class="fa-solid fa-map-pin"></i></div>
+                        <h3>Address</h3>
+                        <p class="card-main-val">102-108 Pinner Rd</p>
+                        <p class="card-sub-val">Harrow HA1 4JD</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Countdown Timer -->
+        <section id="countdown-section">
+            <div class="section-container">
+                <h2 class="section-title">The Celebration Begins In</h2>
+                <div class="countdown-container">
+                    <div class="countdown-card" id="days-card">
+                        <div class="number-wrapper">
+                            <span class="number">00</span>
+                        </div>
+                        <span class="label">Days</span>
+                    </div>
+                    <div class="countdown-card" id="hours-card">
+                        <div class="number-wrapper">
+                            <span class="number">00</span>
+                        </div>
+                        <span class="label">Hours</span>
+                    </div>
+                    <div class="countdown-card" id="minutes-card">
+                        <div class="number-wrapper">
+                            <span class="number">00</span>
+                        </div>
+                        <span class="label">Minutes</span>
+                    </div>
+                    <div class="countdown-card" id="seconds-card">
+                        <div class="number-wrapper">
+                            <span class="number">00</span>
+                        </div>
+                        <span class="label">Seconds</span>
+                    </div>
+                </div>
+                <div id="countdown-finished-msg" class="hidden">The Celebration Begins ❤️</div>
+            </div>
+        </section>
+
+        <!-- A Special Message -->
+        <section id="special-message">
+            <div class="section-container">
+                <div class="message-card animate-scroll-up">
+                    <div class="card-border-corner top-left"></div>
+                    <div class="card-border-corner top-right"></div>
+                    <div class="card-border-corner bottom-left"></div>
+                    <div class="card-border-corner bottom-right"></div>
+                    
+                    <span class="card-crest">✨</span>
+                    <h2 class="section-title">A Special Message</h2>
+                    <div class="message-text">
+                        <p>Every love story has a beautiful beginning, and ours is about to become even more special.</p>
+                        <p>As we exchange rings and promises, we would be honored to have you celebrate this precious moment with us—no matter where you are in the world.</p>
+                        <p class="highlight-text">Please join us, share your blessings, and be a part of our happiest day.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Join? -->
+        <section id="why-join">
+            <div class="section-container">
+                <h2 class="section-title">💝 Why Join?</h2>
+                <p class="section-subtitle">Be a part of our celebrations</p>
+                <div class="why-join-grid">
+                    
+                    <!-- Card 1 -->
+                    <div class="join-feature-card animate-scroll-up">
+                        <div class="join-icon"><i class="fa-solid fa-ring"></i></div>
+                        <h3>Witness our Ring Exchange</h3>
+                        <p>Share the live moment we put on our wedding rings and make our promises.</p>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="join-feature-card animate-scroll-up">
+                        <div class="join-icon"><i class="fa-solid fa-champagne-glasses"></i></div>
+                        <h3>Celebrate Our New Beginning</h3>
+                        <p>Enjoy an unforgettable evening of live music, dancing, delicious food and sparkling celebrations.</p>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="join-feature-card animate-scroll-up">
+                        <div class="join-icon"><i class="fa-solid fa-camera"></i></div>
+                        <h3>Capture Beautiful Memories</h3>
+                        <p>Strike a pose, take group photographs, and help us create memories that will last a lifetime.</p>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="join-feature-card animate-scroll-up">
+                        <div class="join-icon"><i class="fa-solid fa-heart"></i></div>
+                        <h3>Share Your Blessings &amp; Wishes</h3>
+                        <p>Be there to shower us with congratulations, loving prayers, and heartfelt wishes in person.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Timeline Section -->
+        <section id="timeline">
+            <div class="section-container">
+                <h2 class="section-title">Timeline of Celebration</h2>
+                <p class="section-subtitle">Event Celebration Flow</p>
+                
+                <div class="timeline-container">
+                    <div class="timeline-line"></div>
+                    
+                    <!-- Item 1 -->
+                    <div class="timeline-item left">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <span class="time-stamp">Step 1</span>
+                            <h3>Stream Goes Live</h3>
+                            <p>Lobby opens with soft ambient sitar and violin music streaming in. Tech-check for guests.</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="timeline-item right">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <span class="time-stamp">Step 2</span>
+                            <h3>Welcome Address</h3>
+                            <p>Families welcome guests, followed by the grand entrance of the couple.</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="timeline-item left">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <span class="time-stamp">Step 3</span>
+                            <h3>The Ring Exchange</h3>
+                            <p>Close-up exchange of rings live on camera, accompanied by digital flower petals and sparkles.</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 4 -->
+                    <div class="timeline-item right">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <span class="time-stamp">Step 4</span>
+                            <h3>Speeches & Royal Toast</h3>
+                            <p>Toast raised by family members and close friends across different regions.</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 5 -->
+                    <div class="timeline-item left">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <span class="time-stamp">Step 5</span>
+                            <h3>Guest Meet & Greet</h3>
+                            <p>Live interaction room: guests unmute to share wishes, screenshots, and group photographs.</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 6 -->
+                    <div class="timeline-item right">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <span class="time-stamp">Step 6</span>
+                            <h3>Closing & Celebration</h3>
+                            <p>Thank you note from the couple, final visual montages, and dance celebration!</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- Join Us Section: In-Person & Online -->
+        <section id="zoom-live">
+            <div class="section-container">
+                <h2 class="section-title">🌸 We Can't Wait to See You</h2>
+                <p class="section-subtitle">Whether near or far — join us!</p>
+
+                <div class="dual-join-grid">
+
+                    <!-- In-Person Card -->
+                    <div class="join-option-card animate-scroll-up">
+                        <div class="join-option-icon"><i class="fa-solid fa-location-dot"></i></div>
+                        <h3>Join In Person</h3>
+                        <p>Come celebrate with us at <strong>Ember &amp; Mist</strong>, 102-108 Pinner Rd, Harrow HA1 4JD on <strong>19th September 2026 at 5 PM</strong>.</p>
+                        <div class="join-option-actions">
+                            <a href="https://www.google.com/maps/search/?api=1&query=102-108+Pinner+Rd+Harrow+HA1+4JD" target="_blank" class="gold-btn ripple-btn" id="directions-btn">
+                                <i class="fa-solid fa-map-location-dot"></i>
+                                <span>Get Directions</span>
+                            </a>
+                            <button class="outline-btn ripple-btn copy-addr-btn" data-link="Ember &amp; Mist, 102-108 Pinner Rd, Harrow HA1 4JD" id="copy-zoom-link">
+                                <i class="fa-regular fa-copy"></i>
+                                <span>Copy Address</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Online Card -->
+                    <div class="join-option-card animate-scroll-up online-card">
+                        <div class="join-option-icon meet-icon"><i class="fa-brands fa-google"></i></div>
+                        <h3>Join Online</h3>
+                        <p>Joining from afar? We've got you covered! Watch our Ring Ceremony live on <strong>Google Meet</strong> — the link goes live 10 minutes before the event.</p>
+                        <div class="join-option-actions">
+                            <a href="YOUR_GOOGLE_MEET_LINK_HERE" target="_blank" class="gold-btn pulse-button ripple-btn" id="join-meeting-btn">
+                                <i class="fa-solid fa-video"></i>
+                                <span>Join on Meet</span>
+                            </a>
+                            <button class="outline-btn ripple-btn" id="copy-meet-link" data-link="YOUR_GOOGLE_MEET_LINK_HERE">
+                                <i class="fa-regular fa-copy"></i>
+                                <span>Copy Meet Link</span>
+                            </button>
+                        </div>
+                        <div id="copy-toast" class="hidden">Copied! <i class="fa-solid fa-check"></i></div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Venue Location (Optional studio broadcast or physical hall location) -->
+        <section id="location">
+            <div class="section-container">
+                <h2 class="section-title">Venue Location</h2>
+                <p class="section-subtitle">Ember &amp; Mist, 102-108 Pinner Rd, Harrow HA1 4JD</p>
+                <div class="map-wrapper animate-scroll-up">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2483.3!2d-0.3535!3d51.5789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487614d9e5f17d9d%3A0x1!2sEmber+%26+Mist%2C+102-108+Pinner+Rd%2C+Harrow+HA1+4JD!5e0!3m2!1sen!2suk!4v1700000000000!5m2!1sen!2suk" 
+                        width="100%" 
+                        height="450" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                    
+                    <div class="map-overlay">
+                        <a href="https://www.google.com/maps/search/?api=1&query=102-108+Pinner+Rd+Harrow+HA1+4JD" target="_blank" class="gold-btn ripple-btn">
+                            <i class="fa-solid fa-map-location-dot"></i>
+                            <span>Open in Google Maps</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-crest">A&K</div>
+            
+            <div class="with-love-footer">
+                <div>With Love</div>
+                <h2>Aditi &amp; Khush</h2>
+                <p class="footer-msg">"Two hearts, one beautiful beginning — we can't wait to celebrate with you."</p>
+                <h3 class="see-you-online">See You There! 💍</h3>
+            </div>
+            
+            <div class="family-names">
+                <div>ith the blessings of our beloved parents:</div>
+                <p>Aditi Parmar
+                Daughter of Ignas Parmar & Kalpana Parmar</p>
+                <p>Khush Patel
+                Son of Dilip Patel & Shivani Patel</p>
+                <p>request the pleasure of your company
+as they         celebrate their engagement.</p>
+            </div>
+            <div class="copyright">
+                &copy; 2026 Aditi & Khush. All Rights Reserved. Crafted with love.
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- GSAP via CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>

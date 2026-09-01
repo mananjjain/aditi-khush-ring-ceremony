@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Our Story - A beautiful digital love story celebrating the journey of two hearts. Explore our memories, milestones, and dreams for the future.">
+    <meta name="keywords" content="love story, relationship, memories, timeline, couples, romance">
+    <meta name="author" content="Khush & Aditi">
+
+    <meta property="og:title" content="Our Story ❤️ | Khush & Aditi">
+    <meta property="og:description" content="Two people. One beautiful journey. Explore our love story through memories, milestones, and dreams.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="assets/images/hero.jpg">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Our Story ❤️ | Khush & Aditi">
+    <meta name="twitter:description" content="Two people. One beautiful journey.">
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>❤️</text></svg>">
+
+    <title>Our Story ❤️ | Khush & Aditi</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-heart">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="currentColor"/>
+                </svg>
+            </div>
+            <p class="loading-text">Loading our memories...</p>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <nav id="navbar" class="navbar" aria-label="Main navigation">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo" aria-label="Go to home">
+                <span class="nav-heart">❤</span>
+                <span class="nav-names" id="nav-names">K & A</span>
+            </a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#story" class="nav-link">Our Story</a></li>
+                <li><a href="#memories" class="nav-link">Memories</a></li>
+                <li><a href="#dates" class="nav-link">Dates</a></li>
+                <li><a href="#letter" class="nav-link">Letter</a></li>
+                <li><a href="#future" class="nav-link">Future</a></li>
+            </ul>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <button id="music-toggle" class="music-toggle" aria-label="Toggle music" aria-pressed="false">
+        <span class="music-icon" id="music-icon">🎵</span>
+        <span class="music-label" id="music-label">Taylor Swift - Lover</span>
+    </button>
+
+    <iframe id="bg-music"
+        title="Background music"
+        src="https://www.youtube.com/embed/-BjZmE2gtdo?autoplay=1&mute=1&controls=0&loop=1&playlist=-BjZmE2gtdo&start=141&rel=0&modestbranding=1"
+        allow="autoplay; encrypted-media"
+        referrerpolicy="strict-origin-when-cross-origin"
+        style="display:none; width:0; height:0; border:0; pointer-events:none;">
+    </iframe>
+
+    <main>
+
+        <section id="home" class="hero-section">
+            <div class="hero-background">
+                <div class="gradient-layer"></div>
+                <div class="particles-container" id="hero-particles"></div>
+                <div class="glow-circle glow-1"></div>
+                <div class="glow-circle glow-2"></div>
+                <div class="glow-circle glow-3"></div>
+            </div>
+
+            <div class="hero-content">
+                <div class="hero-couple-names reveal-on-scroll">
+                    <span id="hero-partner-name">Aditi</span>
+                    <span class="hero-heart">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="currentColor"/>
+                        </svg>
+                    </span>
+                    <span id="hero-your-name">Khush</span>
+                </div>
+
+                <h1 class="hero-title reveal-on-scroll" data-delay="100">Our Story</h1>
+
+                <p class="hero-subtitle reveal-on-scroll" data-delay="200">Two people. One beautiful journey.</p>
+
+                <div class="hero-since reveal-on-scroll" data-delay="300">
+                    <span class="since-label">Since</span>
+                    <span class="since-date" id="hero-start-date">14 January 2022</span>
+                </div>
+
+                <div class="hero-counter reveal-on-scroll" data-delay="400">
+                    <div class="counter-label">Together for</div>
+                    <div class="counter-items">
+                        <div class="counter-item">
+                            <span class="counter-value" id="hero-years">0</span>
+                            <span class="counter-unit">Years</span>
+                        </div>
+                        <div class="counter-sep">:</div>
+                        <div class="counter-item">
+                            <span class="counter-value" id="hero-months">0</span>
+                            <span class="counter-unit">Months</span>
+                        </div>
+                        <div class="counter-sep">:</div>
+                        <div class="counter-item">
+                            <span class="counter-value" id="hero-days">0</span>
+                            <span class="counter-unit">Days</span>
+                        </div>
+                        <div class="counter-sep">:</div>
+                        <div class="counter-item">
+                            <span class="counter-value" id="hero-hours">00</span>
+                            <span class="counter-unit">Hours</span>
+                        </div>
+                        <div class="counter-sep">:</div>
+                        <div class="counter-item">
+                            <span class="counter-value" id="hero-minutes">00</span>
+                            <span class="counter-unit">Min</span>
+                        </div>
+                        <div class="counter-sep">:</div>
+                        <div class="counter-item">
+                            <span class="counter-value" id="hero-seconds">00</span>
+                            <span class="counter-unit">Sec</span>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="#story" class="hero-cta reveal-on-scroll" data-delay="500" aria-label="Scroll to Our Story timeline">
+                    <span>Explore Our Story</span>
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 4v16m0 0l-6-6m6 6l6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+            </div>
+        </section>
+
+        <section id="story" class="timeline-section">
+            <div class="section-header reveal-on-scroll">
+                <span class="section-eyebrow">Chapter One</span>
+                <h2 class="section-title">Our Love Story</h2>
+                <p class="section-subtitle">The moments that brought us here, woven together in time.</p>
+            </div>
+
+            <div class="timeline-container" id="timeline-container">
+            </div>
+        </section>
+
+        <section id="memories" class="gallery-section">
+            <div class="section-header reveal-on-scroll">
+                <span class="section-eyebrow">Captured Moments</span>
+                <h2 class="section-title">Our Memories</h2>
+                <p class="section-subtitle">Photographs that hold a thousand words, and a million feelings.</p>
+            </div>
+
+            <div class="gallery-grid" id="gallery-grid">
+            </div>
+        </section>
+
+        <section id="little-things" class="little-things-section">
+            <div class="section-header reveal-on-scroll">
+                <span class="section-eyebrow">Little Things</span>
+                <h2 class="section-title">Little Things I Love About Us</h2>
+                <p class="section-subtitle">The small details that make every day extraordinary.</p>
+            </div>
+
+            <div class="cards-container" id="little-things-container">
+            </div>
+        </section>
+
+        <section id="counter-section" class="counter-section">
+            <div class="section-header reveal-on-scroll">
+                <span class="section-eyebrow">Every Second Counts</span>
+                <h2 class="section-title">How Long Have We Been Us?</h2>
+                <p class="section-subtitle">Time flies when you're falling more in love.</p>
+            </div>
+
+            <div class="big-counter reveal-on-scroll">
+                <div class="big-counter-item">
+                    <div class="big-counter-value" id="big-years">0</div>
+                    <div class="big-counter-label">Years</div>
+                </div>
+                <div class="big-counter-item">
+                    <div class="big-counter-value" id="big-months">0</div>
+                    <div class="big-counter-label">Months</div>
+                </div>
+                <div class="big-counter-item">
+                    <div class="big-counter-value" id="big-days">0</div>
+                    <div class="big-counter-label">Days</div>
+                </div>
+                <div class="big-counter-item">
+                    <div class="big-counter-value" id="big-hours">00</div>
+                    <div class="big-counter-label">Hours</div>
+                </div>
+                <div class="big-counter-item">
+                    <div class="big-counter-value" id="big-minutes">00</div>
+                    <div class="big-counter-label">Minutes</div>
+                </div>
+                <div class="big-counter-item">
+                    <div class="big-counter-value" id="big-seconds">00</div>
+                    <div class="big-counter-label">Seconds</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="dates" class="dates-section">
+            <div class="section-header reveal-on-scroll">
+                <span class="section-eyebrow">Mark The Calendar</span>
+                <h2 class="section-title">Important Dates</h2>
+                <p class="section-subtitle">The days that changed our world forever.</p>
+            </div>
+
+            <div class="dates-grid" id="dates-grid">
+            </div>
+        </section>
+
+        <section id="favorites" class="favorites-section">
+            <div class="section-header reveal-on-scroll">
+                <span class="section-eyebrow">Ours</span>
+                <h2 class="section-title">Our Favorites</h2>
+                <p class="section-subtitle">The little things that are uniquely us.</p>
+            </div>
+
+            <div class="favorites-grid" id="favorites-grid">
+            </div>
+        </section>
+
+        <section id="letter" class="letter-section">
+            <div class="section-header reveal-on-scroll">
+                <span class="section-eyebrow">From The Heart</span>
+                <h2 class="section-title">A Letter For You</h2>
+                <p class="section-subtitle">Words I always want you to remember.</p>
+            </div>
+
+            <div class="letter-wrapper reveal-on-scroll">
+                <div class="envelope-container" id="envelope-container">
+                    <button class="envelope-btn" id="open-letter-btn" aria-label="Open letter">
+                        <div class="envelope">
+                            <div class="envelope-flap"></div>
+                            <div class="envelope-body">
+                                <div class="envelope-seal">❤</div>
+                            </div>
+                        </div>
+                        <span class="envelope-label">Open Letter ❤️</span>
+                    </button>
+                </div>
+
+                <div class="letter-modal" id="letter-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="letter-title">
+                    <div class="letter-overlay" id="letter-overlay"></div>
+                    <div class="letter-content-wrapper">
+                        <button class="letter-close" id="close-letter-btn" aria-label="Close letter">×</button>
+                        <article class="letter-paper">
+                            <header class="letter-header">
+                                <p class="letter-greeting" id="letter-greeting">My Dearest Aditi,</p>
+                            </header>
+                            <div class="letter-body" id="letter-body">
+                                <p>Where do I even begin? From the very first moment I saw you, something inside me knew that my world was about to change forever. And it did — in the most beautiful way imaginable.</p>
+                                <p>I still think about the way you laughed on our first date, the way your eyes light up when you talk about something you love, the way you hold my hand just a little tighter when we cross the street. These are the moments I replay in my head on the days I miss you most.</p>
+                                <p>You are my calm in every storm, my warmth on the coldest nights, and my favorite part of every single day. You make ordinary mornings feel like adventures and quiet evenings feel like the grandest celebrations.</p>
+                                <p>Thank you for choosing me — every single day. Thank you for your patience, your kindness, and the way you love me even on the days I don't always love myself. Thank you for being my safe place, my biggest cheerleader, and my very best friend.</p>
+                                <p>Every love story is beautiful, but ours will always be my favorite. And I can't wait to write a million more chapters with you.</p>
+                            </div>
+                            <footer class="letter-footer">
+                                <p class="letter-closing">Forever and always yours,</p>
+                                <p class="letter-signature" id="letter-signature">Khush ❤️</p>
+                            </footer>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="reasons" class="reasons-section">
+            <div class="section-header reveal-on-scroll">
+                <span class="section-eyebrow">Infinite Reasons</span>
+                <h2 class="section-title">Reasons Why I Love You</h2>
+                <p class="section-subtitle">I could spend a lifetime listing them all.</p>
+            </div>
+
+            <div class="reasons-display reveal-on-scroll">
+                <div class="reasons-card" id="reasons-card">
+                    <span class="reasons-number" id="reasons-number">01</span>
+                    <p class="reasons-text" id="reasons-text">Loading reason...</p>
+                    <button class="reasons-btn" id="reasons-btn">
+                        <span>Show Me Another</span>
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="18" height="18">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" fill="currentColor"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section id="future" class="future-section">
+            <div class="future-bg-decor">
+                <div class="future-glow glow-a"></div>
+                <div class="future-glow glow-b"></div>
+            </div>
+            <div class="section-header reveal-on-scroll">
+                <span class="section-eyebrow">What's Next</span>
+                <h2 class="section-title">Our Future</h2>
+                <p class="section-subtitle">Dreams we're building together, one tomorrow at a time.</p>
+            </div>
+
+            <div class="future-grid" id="future-grid">
+            </div>
+        </section>
+
+        <section class="final-section">
+            <div class="final-content reveal-on-scroll">
+                <p class="final-quote">And this is only the beginning...</p>
+                <h2 class="final-message">Forever starts with you. <span class="final-heart">❤</span></h2>
+                <div class="final-names">
+                    <span id="final-partner">Aditi</span>
+                    <span class="final-plus">+</span>
+                    <span id="final-yours">Khush</span>
+                </div>
+                <p class="final-since" id="final-since">Since 14 January 2022</p>
+                <div class="final-heart-anim">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="currentColor"/>
+                    </svg>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <p class="footer-made">Made with <span class="footer-heart">❤️</span> for <span id="footer-partner">Aditi</span></p>
+        <p class="footer-copy">© <span id="footer-year">2026</span> Our Story</p>
+    </footer>
+
+    <button id="secret-heart" class="secret-heart" aria-label="Secret">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="16" height="16">
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="currentColor"/>
+        </svg>
+    </button>
+
+    <div id="secret-modal" class="secret-modal" aria-hidden="true" role="dialog" aria-modal="true">
+        <div class="secret-overlay" id="secret-overlay"></div>
+        <div class="secret-content">
+            <button class="secret-close" id="secret-close" aria-label="Close secret message">×</button>
+            <div class="secret-inner">
+                <div class="secret-icon">💌</div>
+                <h3 class="secret-title">You found our little secret ❤️</h3>
+                <p class="secret-message" id="secret-message">
+                    If you're reading this, know that you are the most precious person in my world. Every single day with you feels like a gift I never want to stop unwrapping. Thank you for being my forever. I love you — today, tomorrow, and all the days after that.
+                </p>
+                <div class="secret-signature">— Khush</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Image viewer">
+        <button class="lightbox-close" id="lightbox-close" aria-label="Close">×</button>
+        <button class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="Previous image">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="28" height="28">
+                <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
+        <figure class="lightbox-figure">
+            <img src="" alt="" id="lightbox-img" loading="eager">
+            <figcaption class="lightbox-caption">
+                <p class="lightbox-caption-text" id="lightbox-caption-text"></p>
+                <p class="lightbox-caption-meta" id="lightbox-caption-meta"></p>
+            </figcaption>
+        </figure>
+        <button class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="Next image">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="28" height="28">
+                <path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
+    </div>
+
+    <div id="cursor-dot" class="cursor-dot" aria-hidden="true"></div>
+    <div id="cursor-ring" class="cursor-ring" aria-hidden="true"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
