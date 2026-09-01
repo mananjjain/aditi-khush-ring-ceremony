@@ -50,9 +50,11 @@
 
     <!-- Floating Music Player -->
     <div id="music-player" class="hidden">
-        <audio id="bg-audio" preload="auto">
-            <source src="./WhatsApp%20Audio%202026-09-01%20at%202.50.02%20AM.mpeg" type="audio/mpeg">
-            <source src="./assets/music/WhatsApp%20Audio%202026-09-01%20at%202.50.02%20AM.mpeg" type="audio/mpeg">
+        <audio id="bg-audio" preload="auto" loop>
+            <source src="song.mp3" type="audio/mp3">
+            <source src="assets/music/song.mp3" type="audio/mp3">
+            <source src="song.mp3" type="audio/mpeg">
+            <source src="assets/music/song.mp3" type="audio/mpeg">
         </audio>
         <button id="music-toggle" class="ripple-btn" aria-label="Toggle Music">
             <i class="fas fa-music"></i>

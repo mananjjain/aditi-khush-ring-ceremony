@@ -45,16 +45,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // --- MUSIC SYSTEM (LOCAL AUDIO FROM 2:21) ---
     let canSeek = false;
-    bgAudio.addEventListener('loadedmetadata', () => { canSeek = true; });
-    bgAudio.addEventListener('canplay', () => { canSeek = true; });
+
+    bgAudio.addEventListener('loadedmetadata', () => {
+        canSeek = true;
+    });
+
+    bgAudio.addEventListener('canplay', () => {
+        canSeek = true;
+    });
 
     function playAtStart() {
-        try { bgAudio.volume = parseFloat(volumeSlider.value); } catch(e) {}
+        bgAudio.volume = parseFloat(volumeSlider.value);
+
         try {
-            if (canSeek && (!isFinite(bgAudio.currentTime) || bgAudio.currentTime < MUSIC_START_TIME - 1 || bgAudio.currentTime >= bgAudio.duration - 0.5 || bgAudio.ended)) {
+            if (canSeek && (bgAudio.currentTime < MUSIC_START_TIME - 1 || bgAudio.ended || bgAudio.currentTime >= bgAudio.duration - 1)) {
                 bgAudio.currentTime = MUSIC_START_TIME;
             }
-        } catch(e) { /* ignore seek errors */ }
+        } catch (e) {
+            // Ignore seek errors until metadata is ready.
+        }
+
         bgAudio.play().then(() => {
             musicToggle.classList.add('playing');
         }).catch(() => {
@@ -65,25 +75,31 @@ document.addEventListener("DOMContentLoaded", () => {
     function startMusic() {
         if (musicStarted) return;
         musicStarted = true;
-        // Unlock audio context for strict browsers (Chrome, iOS Safari)
-        try { bgAudio.load(); } catch(e) {}
-        try { bgAudio.volume = parseFloat(volumeSlider.value); } catch(e) {}
+
+        try {
+            bgAudio.load();
+        } catch (e) {}
+
+        bgAudio.volume = parseFloat(volumeSlider.value);
 
         if (canSeek) {
             playAtStart();
         } else {
-            // Wait for file to be ready on live sites (slower network)
             bgAudio.addEventListener('loadedmetadata', function onceReady() {
                 bgAudio.removeEventListener('loadedmetadata', onceReady);
-                setTimeout(playAtStart, 300);
+                playAtStart();
             });
-            // Fallback: try anyway after 1 second even if metadata is slow
-            setTimeout(playAtStart, 1000);
+
+            setTimeout(playAtStart, 500);
         }
     }
 
     function toggleMusic() {
-        if (!musicStarted) { startMusic(); return; }
+        if (!musicStarted) {
+            startMusic();
+            return;
+        }
+
         if (bgAudio.paused || bgAudio.ended) {
             playAtStart();
         } else {
@@ -95,20 +111,28 @@ document.addEventListener("DOMContentLoaded", () => {
     musicToggle.addEventListener('click', toggleMusic);
 
     volumeSlider.addEventListener('input', (e) => {
-        try { bgAudio.volume = parseFloat(e.target.value); } catch(e) {}
+        try {
+            bgAudio.volume = parseFloat(e.target.value);
+        } catch (e) {}
     });
 
     bgAudio.addEventListener('ended', () => {
-        try { bgAudio.currentTime = MUSIC_START_TIME; } catch(e) {}
+        try {
+            bgAudio.currentTime = MUSIC_START_TIME;
+        } catch (e) {}
         bgAudio.play().catch(() => {});
     });
 
-    // CRITICAL: Unlock audio on FIRST CLICK ANYWHERE on page (Chrome/iOS policy)
     document.body.addEventListener('click', function firstAnyClick() {
-        try { bgAudio.load(); bgAudio.volume = parseFloat(volumeSlider.value); } catch(e) {}
+        try {
+            bgAudio.load();
+            bgAudio.volume = parseFloat(volumeSlider.value);
+        } catch (e) {}
+
         if (musicStarted && bgAudio.paused) {
             playAtStart();
         }
+
         document.body.removeEventListener('click', firstAnyClick);
     }, { once: true });
 
