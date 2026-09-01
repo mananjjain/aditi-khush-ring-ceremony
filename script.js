@@ -44,63 +44,73 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // --- MUSIC SYSTEM (LOCAL AUDIO FROM 2:21) ---
+    let canSeek = false;
+    bgAudio.addEventListener('loadedmetadata', () => { canSeek = true; });
+    bgAudio.addEventListener('canplay', () => { canSeek = true; });
+
+    function playAtStart() {
+        try { bgAudio.volume = parseFloat(volumeSlider.value); } catch(e) {}
+        try {
+            if (canSeek && (!isFinite(bgAudio.currentTime) || bgAudio.currentTime < MUSIC_START_TIME - 1 || bgAudio.currentTime >= bgAudio.duration - 0.5 || bgAudio.ended)) {
+                bgAudio.currentTime = MUSIC_START_TIME;
+            }
+        } catch(e) { /* ignore seek errors */ }
+        bgAudio.play().then(() => {
+            musicToggle.classList.add('playing');
+        }).catch(() => {
+            musicToggle.classList.remove('playing');
+        });
+    }
+
     function startMusic() {
         if (musicStarted) return;
         musicStarted = true;
+        // Unlock audio context for strict browsers (Chrome, iOS Safari)
+        try { bgAudio.load(); } catch(e) {}
+        try { bgAudio.volume = parseFloat(volumeSlider.value); } catch(e) {}
 
-        bgAudio.volume = parseFloat(volumeSlider.value);
-        bgAudio.currentTime = MUSIC_START_TIME;
-
-        bgAudio.play()
-            .then(() => {
-                musicToggle.classList.add("playing");
-                console.log("🎵 Music started at 2:21");
-            })
-            .catch((err) => {
-                console.warn("Playback blocked, tap music icon to start:", err);
-                musicToggle.classList.remove("playing");
+        if (canSeek) {
+            playAtStart();
+        } else {
+            // Wait for file to be ready on live sites (slower network)
+            bgAudio.addEventListener('loadedmetadata', function onceReady() {
+                bgAudio.removeEventListener('loadedmetadata', onceReady);
+                setTimeout(playAtStart, 300);
             });
+            // Fallback: try anyway after 1 second even if metadata is slow
+            setTimeout(playAtStart, 1000);
+        }
     }
 
     function toggleMusic() {
-        if (!musicStarted) {
-            startMusic();
-            return;
-        }
-
+        if (!musicStarted) { startMusic(); return; }
         if (bgAudio.paused || bgAudio.ended) {
-            if (bgAudio.currentTime < MUSIC_START_TIME - 1 || bgAudio.ended) {
-                bgAudio.currentTime = MUSIC_START_TIME;
-            }
-            bgAudio.play()
-                .then(() => musicToggle.classList.add("playing"))
-                .catch(err => console.warn("Play failed:", err));
+            playAtStart();
         } else {
             bgAudio.pause();
-            musicToggle.classList.remove("playing");
+            musicToggle.classList.remove('playing');
         }
     }
 
-    musicToggle.addEventListener("click", toggleMusic);
+    musicToggle.addEventListener('click', toggleMusic);
 
-    volumeSlider.addEventListener("input", (e) => {
-        bgAudio.volume = parseFloat(e.target.value);
-    });
-
-    // Loop song: when it ends, jump back to 2:21
-    bgAudio.addEventListener("ended", () => {
-        bgAudio.currentTime = MUSIC_START_TIME;
-        bgAudio.play().catch(err => console.warn("Loop play failed:", err));
+    volumeSlider.addEventListener('input', (e) => {
+        try { bgAudio.volume = parseFloat(e.target.value); } catch(e) {}
     });
 
-    // Debug: log when audio is ready or fails
-    bgAudio.addEventListener("loadedmetadata", () => {
-        console.log("✅ Audio loaded, duration:", Math.round(bgAudio.duration), "seconds");
+    bgAudio.addEventListener('ended', () => {
+        try { bgAudio.currentTime = MUSIC_START_TIME; } catch(e) {}
+        bgAudio.play().catch(() => {});
     });
-    bgAudio.addEventListener("error", (e) => {
-        console.error("❌ Audio load error - check file path:", e);
-        console.error("Audio src tried:", bgAudio.currentSrc);
-    });
+
+    // CRITICAL: Unlock audio on FIRST CLICK ANYWHERE on page (Chrome/iOS policy)
+    document.body.addEventListener('click', function firstAnyClick() {
+        try { bgAudio.load(); bgAudio.volume = parseFloat(volumeSlider.value); } catch(e) {}
+        if (musicStarted && bgAudio.paused) {
+            playAtStart();
+        }
+        document.body.removeEventListener('click', firstAnyClick);
+    }, { once: true });
 
     // --- CANVAS BACKGROUND ANIMATION SYSTEM (PETALS & SPARKLES) ---
     function setupCanvas(canvasId, isSplash = false) {
